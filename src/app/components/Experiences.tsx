@@ -16,7 +16,7 @@ const experiences = [
     logo: dataObserverLogo,
     logoVariant: 'wide',
     stats: [
-      { label: 'Temps gagné / semaine', value: '2h', icon: '⚡' },
+      { label: 'Temps gagné / semaine', value: '2h+', icon: '⚡' },
       { label: 'Productivité clients', value: '+20%', icon: '💎' },
     ],
   },
