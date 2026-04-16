@@ -441,7 +441,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className={`mt-8 ${compactLayout ? 'grid grid-cols-2 gap-3' : 'flex flex-wrap gap-3'}`}
+              className="mt-8 mx-auto grid w-full max-w-[18rem] grid-cols-2 gap-3 sm:max-w-md"
             >
               {[
                 { label: '📍 Nancy & Paris, France', border: 'border-primary/30', bg: 'bg-primary/5', accent: 'bg-primary', edge: 'left' },
@@ -451,7 +451,7 @@ export function Hero() {
               ].map((pill, index) => (
                 <motion.div
                   key={pill.label}
-                  className={`group relative overflow-hidden border-2 bg-card/90 px-4 py-2 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${pill.border}`}
+                  className={`group relative flex min-h-[4.5rem] items-center justify-center overflow-hidden border-2 bg-card/90 px-4 py-2 text-center backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 ${pill.border}`}
                   initial={{ opacity: 0, x: compactLayout ? 0 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.9 + index * 0.1 }}
