@@ -30,14 +30,14 @@ const languages = [
     proficiency: 100,
   },
   {
-    name: 'Espagnol',
-    level: 'Notions',
-    proficiency: 40,
-  },
-  {
     name: 'Allemand',
     level: 'Notions',
     proficiency: 30,
+  },
+  {
+    name: 'Espagnol',
+    level: 'Notions',
+    proficiency: 20,
   },
 ];
 
@@ -106,7 +106,7 @@ export function Education() {
                   ease: "easeInOut",
                 }}
               />
-              <span className="text-sm text-secondary tracking-widest font-mono relative z-10">FORMATION & LANGUES</span>
+              <span className="text-sm text-secondary tracking-widest font-mono relative z-10">FORMATION &amp; LANGUES</span>
               {/* Pixel corners */}
               <div className="absolute top-0 left-0 w-2 h-2 bg-secondary" />
               <div className="absolute bottom-0 right-0 w-2 h-2 bg-secondary" />
