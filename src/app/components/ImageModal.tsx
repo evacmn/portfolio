@@ -1,0 +1,156 @@
+import { motion, AnimatePresence } from 'motion/react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect } from 'react';
+
+interface ImageModalProps {
+  isOpen: boolean;
+  imageSrc: string;
+  onClose: () => void;
+  onPrev?: () => void;
+  onNext?: () => void;
+  hasMultiple?: boolean;
+}
+
+export function ImageModal({ isOpen, imageSrc, onClose, onPrev, onNext, hasMultiple }: ImageModalProps) {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft' && onPrev) onPrev();
+      if (e.key === 'ArrowRight' && onNext) onNext();
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose, onPrev, onNext]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          onClick={onClose}
+        >
+          {/* Backdrop avec pixel grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-background/98 backdrop-blur-2xl"
+          >
+            {/* Pixel grid animé */}
+            <div className="absolute inset-0 opacity-[0.03]" style={{
+              backgroundImage: `
+                linear-gradient(rgba(91, 229, 132, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(91, 229, 132, 0.8) 1px, transparent 1px)
+              `,
+              backgroundSize: '32px 32px',
+              imageRendering: 'pixelated',
+            }} />
+          </motion.div>
+
+          {/* Bouton fermeture */}
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ delay: 0.1 }}
+            onClick={onClose}
+            className="absolute top-6 right-6 z-10 p-3 bg-card/90 backdrop-blur-sm border-2 border-primary/40 hover:border-primary/70 transition-all duration-300 group"
+          >
+            <X className="w-6 h-6 text-primary" />
+            {/* Pixel corners */}
+            <div className="absolute top-0 left-0 w-2 h-2 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute bottom-0 right-0 w-2 h-2 bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.button>
+
+          {/* Navigation gauche */}
+          {hasMultiple && onPrev && (
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ delay: 0.15 }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onPrev();
+              }}
+              className="absolute left-6 z-10 p-3 bg-card/90 backdrop-blur-sm border-2 border-secondary/40 hover:border-secondary/70 transition-all duration-300 group"
+            >
+              <ChevronLeft className="w-6 h-6 text-secondary" />
+              <div className="absolute top-0 left-0 w-2 h-2 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.button>
+          )}
+
+          {/* Navigation droite */}
+          {hasMultiple && onNext && (
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ delay: 0.15 }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onNext();
+              }}
+              className="absolute right-6 z-10 p-3 bg-card/90 backdrop-blur-sm border-2 border-secondary/40 hover:border-secondary/70 transition-all duration-300 group"
+            >
+              <ChevronRight className="w-6 h-6 text-secondary" />
+              <div className="absolute top-0 right-0 w-2 h-2 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
+            </motion.button>
+          )}
+
+          {/* Container image */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-6xl w-full max-h-[85vh] group"
+          >
+            {/* Glow effect */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 opacity-50 blur-2xl" />
+
+            {/* Image avec bordures pixel */}
+            <div className="relative border-2 border-primary/50 overflow-hidden bg-card">
+              <img
+                src={imageSrc}
+                alt="Aperçu agrandi"
+                className="w-full h-full object-contain max-h-[85vh]"
+              />
+
+              {/* Voxel corners */}
+              <div className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary" />
+              <div className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-secondary" />
+              <div className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-accent" />
+              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary" />
+
+              {/* Scanline effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent h-32 pointer-events-none"
+                animate={{
+                  y: ['-100%', '200%'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
