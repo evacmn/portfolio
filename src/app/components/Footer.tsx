@@ -108,7 +108,7 @@ export function Footer() {
               </a>
               <p className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-accent/30" />
-                <span className="text-muted-foreground">Nancy, France</span>
+                <span className="text-muted-foreground">Nancy &amp; Paris, France</span>
               </p>
             </div>
           </motion.div>
