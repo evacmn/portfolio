@@ -1,16 +1,10 @@
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Send, Linkedin } from 'lucide-react';
 import { useState } from 'react';
 import { PixelInput, PixelTextarea } from './PixelInput';
 import { PixelButton } from './PixelButton';
 
 const contactInfo = [
-  {
-    icon: Phone,
-    label: 'Téléphone',
-    value: '07 87 52 63 73',
-    href: 'tel:+33787526373',
-  },
   {
     icon: Mail,
     label: 'Email',

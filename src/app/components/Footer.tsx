@@ -98,13 +98,6 @@ export function Footer() {
                 <div className="w-1.5 h-1.5 bg-secondary/30 group-hover:bg-secondary transition-colors" />
                 <span className="font-mono">evacmn@outlook.fr</span>
               </a>
-              <a
-                href="tel:+33787526373"
-                className="group flex items-center gap-2 text-muted-foreground hover:text-secondary transition-colors"
-              >
-                <div className="w-1.5 h-1.5 bg-secondary/30 group-hover:bg-secondary transition-colors" />
-                <span className="font-mono">07 87 52 63 73</span>
-              </a>
               <p className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-accent/30" />
                 <span className="text-muted-foreground">Nancy, France</span>
