@@ -444,11 +444,10 @@ export function Hero() {
               className={`mt-8 ${compactLayout ? 'grid grid-cols-2 gap-3' : 'flex flex-wrap gap-3'}`}
             >
               {[
-                { label: '📍 Nancy, France', border: 'border-primary/30', bg: 'bg-primary/5', accent: 'bg-primary', edge: 'left' },
-                { label: 'Paris, France', border: 'border-secondary/30', bg: 'bg-secondary/5', accent: 'bg-secondary', edge: 'right' },
-                { label: 'Bac+5 (en cours)', border: 'border-accent/30', bg: 'bg-accent/5', accent: 'bg-accent', edge: 'bottom' },
-                { label: '24 ans', border: 'border-primary/30', bg: 'bg-primary/5', accent: 'bg-primary', edge: 'right' },
-                { label: 'Permis B', border: 'border-secondary/30', bg: 'bg-secondary/5', accent: 'bg-secondary', edge: 'bottom' },
+                { label: '📍 Nancy & Paris, France', border: 'border-primary/30', bg: 'bg-primary/5', accent: 'bg-primary', edge: 'left' },
+                { label: 'Bac+5 (en cours)', border: 'border-secondary/30', bg: 'bg-secondary/5', accent: 'bg-secondary', edge: 'right' },
+                { label: '24 ans', border: 'border-accent/30', bg: 'bg-accent/5', accent: 'bg-accent', edge: 'bottom' },
+                { label: 'Permis B', border: 'border-primary/30', bg: 'bg-primary/5', accent: 'bg-primary', edge: 'right' },
               ].map((pill, index) => (
                 <motion.div
                   key={pill.label}
