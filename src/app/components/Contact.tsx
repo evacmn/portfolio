@@ -37,6 +37,13 @@ export function Contact() {
     message: '',
   });
 
+  const createMailtoLink = () =>
+    `mailto:evacmn@outlook.fr?subject=${encodeURIComponent(
+      `Contact depuis le portfolio - ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmitting) return;
@@ -65,7 +72,7 @@ export function Contact() {
       const result = await response.json().catch(() => null);
 
       if (!response.ok || result?.success === false || result?.success === 'false') {
-        throw new Error(result?.message || 'L’envoi du message a échoué.');
+        throw new Error(result?.message || "L'envoi du message a échoué.");
       }
 
       setSubmitState({
@@ -80,10 +87,17 @@ export function Contact() {
       setHoneypot('');
     } catch (error) {
       console.error(error);
+      const message =
+        error instanceof Error ? error.message : "L'envoi automatique a échoué.";
+      const activationNeeded = /activation/i.test(message);
+
       setSubmitState({
         type: 'error',
-        message: "L'envoi automatique a échoué. Vous pouvez réessayer ou utiliser mon adresse email affichée à gauche.",
+        message: activationNeeded
+          ? "Le formulaire attend encore une activation unique côté réception. Je vous ouvre votre application mail avec le message prérempli."
+          : "L'envoi automatique a échoué. Je vous ouvre votre application mail avec le message prérempli.",
       });
+      window.location.href = createMailtoLink();
     } finally {
       setIsSubmitting(false);
     }
