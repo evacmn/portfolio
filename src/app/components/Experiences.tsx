@@ -202,14 +202,14 @@ export function Experiences() {
                             className="mb-4 flex justify-center sm:justify-start"
                           >
                             <div
-                              className={`relative border-2 border-primary/30 p-2 group-hover:border-primary/50 transition-all duration-300 ${
-                                isWideLogo ? 'w-28 h-16 bg-card/80' : 'w-16 h-16 bg-card'
+                              className={`relative border-2 border-primary/30 group-hover:border-primary/50 transition-all duration-300 ${
+                                isWideLogo ? 'inline-flex items-center justify-center bg-card/80 px-2.5 py-1.5' : 'w-16 h-16 bg-card p-2'
                               }`}
                             >
                               <img
                                 src={exp.logo}
                                 alt={`${exp.company} logo`}
-                                className="w-full h-full object-contain"
+                                className={isWideLogo ? 'h-7 w-auto max-w-[7.5rem] object-contain' : 'w-full h-full object-contain'}
                               />
                               {/* Pixel corners */}
                               <div className="absolute top-0 left-0 w-2 h-2 bg-primary" />
