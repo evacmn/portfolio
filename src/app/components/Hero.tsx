@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowDown, Sparkles, Code2, Users, Download } from 'lucide-react';
+import { ArrowDown, Sparkles, Briefcase, Users, Download, Mail } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import heroImageOne from '../../imports/IMG_2633.jpeg';
 import heroImageTwo from '../../imports/IMG_3755.jpeg';
@@ -289,7 +289,7 @@ export function Hero() {
                   animate={{ x: ['-100%', '200%'] }}
                   transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: 'linear' }}
                 />
-                <Code2 className="relative z-10 h-5 w-5" />
+                <Briefcase className="relative z-10 h-5 w-5" />
                 <span className="relative z-10">{copy.actions.experiences}</span>
                 <div className="absolute right-0 top-0 h-2 w-2 bg-primary-foreground opacity-50" />
               </motion.a>
@@ -316,6 +316,7 @@ export function Hero() {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="absolute inset-0 origin-left scale-x-0 bg-accent/5 transition-transform duration-300 group-hover:scale-x-100" />
+                <Mail className="relative z-10 h-5 w-5 text-accent" />
                 <span className="relative z-10">{copy.actions.contact}</span>
               </motion.a>
               <motion.a
