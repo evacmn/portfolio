@@ -209,7 +209,7 @@ export function Hero() {
               transition={{ delay: 0.5 }}
               className="mb-8 text-sm leading-relaxed text-muted-foreground"
             >
-              Spécialisée en communication digitale, création de contenu et stratégie éditoriale, je mets plus de 10 ans d&apos;expérience autodidacte au service d&apos;identités fortes, de contenus engageants et de stratégies pensées pour générer de la visibilité et de l&apos;impact.
+              Spécialisée en communication digitale, création de contenu et stratégie éditoriale, je mets plus de 7 ans d&apos;expérience autodidacte au service d&apos;identités fortes, de contenus engageants et de stratégies pensées pour générer de la visibilité et de l&apos;impact.
             </motion.p>
 
             <motion.div

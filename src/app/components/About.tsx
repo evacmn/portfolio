@@ -15,7 +15,7 @@ const stats = [
     accentClassName: 'bg-secondary',
   },
   {
-    value: '3',
+    value: '4',
     label: 'Langues',
     valueClassName: 'text-accent',
     accentClassName: 'bg-accent',
@@ -167,7 +167,7 @@ export function About() {
                   </p>
 
                   <p className="text-base leading-relaxed">
-                    Avec plus de <span className="font-medium text-primary">7 ans d&apos;exploration autodidacte</span> des projets numériques, je maîtrise l&apos;écosystème digital, des outils créatifs aux plateformes d&apos;analyse, en passant par les nouvelles technologies comme l&apos;IA.
+                    Avec plus de <span className="font-medium text-primary">7 ans d&apos;expérience autodidacte</span> des projets numériques, je maîtrise l&apos;écosystème digital, des outils créatifs aux plateformes d&apos;analyse, en passant par les nouvelles technologies comme l&apos;IA.
                   </p>
                 </div>
               </div>
